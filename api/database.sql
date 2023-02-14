@@ -1,3 +1,10 @@
+--In this file, there are all the commands to create a database
+--IMPORTANT! Check the information about database in "pool" method in back.js. Change name and password if they are different for you
+
+--Creating ENUM for transaction_category column
+CREATE TYPE category AS ENUM ('Home', 'Car', 'Pets', 'Food', 'Electronics', 'School', 'Misc');
+
+--Creating table
 create TABLE money(
     transaction_id SERIAL PRIMARY KEY,
     date DATE,
@@ -8,30 +15,7 @@ create TABLE money(
     transaction_category category 
 );
 
-CREATE TYPE category AS ENUM ('Home', 'Car', 'Pets', 'Food', 'Electronics', 'School', 'Misc');
-
-
-SELECT
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Home') AS home_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Car') AS car_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Pets') AS pets_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Food') AS food_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Electronics') AS electronics_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'School') AS school_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Misc') AS misc_debit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Home') AS home_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Car') AS car_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Pets') AS pets_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Food') AS food_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Electronics') AS electronics_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'School') AS school_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Misc') AS misc_credit
-FROM
-    money
-LIMIT
-    1;
-
-
+--Data mock
 INSERT INTO money (date, debit_amount, credit_amount, sender, reciever, transaction_category) VALUES
 ('2022-12-08', 500, 0, 'Mihail Trofimov', 'Serghei Trofimov', 'Car'),
 ('2020-08-11', 0, 750, 'Will Grigg', 'Josh Maja', 'Misc'),
@@ -133,3 +117,27 @@ INSERT INTO money (date, debit_amount, credit_amount, sender, reciever, transact
 ('2019-01-23', 5000, 0, 'Ruslan Malinovskiy', 'Andrei Arshavin', 'Pets'),
 ('2023-01-11', 0, 10000, 'Mason Greenwood', 'Mason Mount', 'Electronics'),
 ('2019-05-30', 5500, 0, 'Blake Griffin', 'Joe Hart', 'Misc');
+
+--Query for "/api/sums"
+SELECT
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Home') AS home_debit,
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Car') AS car_debit,
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Pets') AS pets_debit,
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Food') AS food_debit,
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Electronics') AS electronics_debit,
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'School') AS school_debit,
+    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Misc') AS misc_debit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Home') AS home_credit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Car') AS car_credit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Pets') AS pets_credit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Food') AS food_credit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Electronics') AS electronics_credit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'School') AS school_credit,
+    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Misc') AS misc_credit
+FROM
+    money
+LIMIT
+    1;
+
+--Query for "/api/data"
+SELECT * FROM money;
