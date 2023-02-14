@@ -33,11 +33,16 @@ Second component has a table with all transactions and information about them. T
 
 ### This app is pretty much in a concept state so far, but sooner or later, it will be working properly :)
 
-## To-Do List:
+## 14/02/2023 Update
 
-1) Make it possible to sort data by each collumn
-2) Implement filter by date
-3) Implement language switch from English to Hebrew
-4) Add proper styling
-5) Make pie charts stay next to each other. Consider using another library for pie charts. Ex: Google Charts
-6) Implement usage of Sequelize
+## Finished Tasks:
+
+1) Sorting data by collumns
+
+## To-Do List:
+1) Implement filter by date
+2) Implement language switch from English to Hebrew
+3) Add proper styling
+4) Make pie charts stay next to each other. Consider using another library for pie charts. Ex: Google Charts
+5) Implement usage of Sequelize
+
