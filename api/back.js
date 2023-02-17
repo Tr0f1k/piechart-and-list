@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const { Pool } = require("pg");
 
+// Connecting to database
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
@@ -16,7 +17,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-
+// GET method that gets sums for debits and credits based on category of transaction
 app.get("/api/sums", async (req, res) => {
   try {
     const client = await pool.connect();
@@ -30,14 +31,11 @@ app.get("/api/sums", async (req, res) => {
   }
 });
 
+// GET method that gets all data from database
 app.get("/api/data", async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 5;
-    const offset = (page - 1) * limit;
-
     const client = await pool.connect();
-    const result = await client.query(`SELECT * FROM money ORDER BY transaction_id LIMIT $1 OFFSET $2`, [limit, offset]);
+    const result = await client.query("SELECT * FROM money ORDER BY transaction_id");
     const data = result.rows;
     client.release();
     res.json(data);
@@ -47,7 +45,7 @@ app.get("/api/data", async (req, res) => {
   }
 });
 
-
+//PORT setup
 app.listen(4000, () => {
   console.log("Server started on http://localhost:4000");
 });

@@ -1,16 +1,9 @@
 import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import TablePagination from '@material-ui/core/TablePagination';
-import Paper from '@material-ui/core/Paper';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Paper, TablePagination } from "@material-ui/core";
 import { stableSort, getSorting } from './helpers';
 
+//Table Styling
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -25,35 +18,40 @@ function DataGrid() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [page, setPage] = React.useState(0);
 
+  //Receiving data from API
   React.useEffect(() => {
-    fetch(`http://localhost:4000/api/data?page=${page + 1}&limit=${rowsPerPage}`)
+    fetch(`http://localhost:4000/api/data`)
       .then(res => res.json())
       .then(res => {
         setData(res);
       });
   }, [page, rowsPerPage]);
 
+  //Handling page change
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  //Handling change of amount of rows per page
   const handleChangeRowsPerPage = (event) => {
     const newRowsPerPage = +event.target.value;
     setRowsPerPage(newRowsPerPage);
     setPage(0);
-    fetch(`http://localhost:4000/api/data?page=1&limit=${newRowsPerPage}`)
+    fetch(`http://localhost:4000/api/data`)
       .then(res => res.json())
       .then(res => {
         setData(res.data);
       });
   };
 
+  //Handling sorting
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
+  //Formatting date as dd/mm/yyyy
   const formatDate = date => {
     return new Date(date).toLocaleDateString('en-GB', {
       day: '2-digit',
@@ -62,13 +60,12 @@ function DataGrid() {
     });
   };
 
+  //In case if there is no data on API
   if (!data) {
     return <div>Loading data...</div>;
   }
 
   const sortedData = data.length > 0 ? stableSort(data, getSorting(order, orderBy)) : data;
-  const rowCount = sortedData.length;
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rowCount - page * rowsPerPage);
   const rows = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
 

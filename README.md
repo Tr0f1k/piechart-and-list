@@ -3,7 +3,9 @@
 ## Technological Stack:
 
 ReactJS
+
 NodeJS + ExpressJS
+
 PostgreSQL
 
 ## Project Setup
@@ -49,6 +51,14 @@ Second component has a table with all transactions and information about them. T
 ### Known Issues:
 
 1) Table pagination is working wierdly. When user picks a value in "Rows per page" menu, the proper amount of rows per page is shown, but it is impossible to change to the next page. Seems like there is something wrong either with 'api/data' GET method, or with 'fetch' method in 'DataGrid.js'.
+
+## 17/02/2023 1st Update
+
+### Finished Tasks:
+
+1) Fixed table pagination. The problem was in GET method. Now it works as it should work
+2) Added comments to the code
+3) Moved PieCharts to a separate component
 
 ## To-Do List:
 1) Implement filter by date
