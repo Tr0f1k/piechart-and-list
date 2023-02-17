@@ -35,9 +35,20 @@ Second component has a table with all transactions and information about them. T
 
 ## 14/02/2023 Update
 
-## Finished Tasks:
+### Finished Tasks:
 
 1) Sorting data by collumns
+
+## 16/02/2023 Update
+
+### Finished Tasks:
+
+1) Made SQL query in 'api/sums' GET request to a more convenient one
+2) Adapted pie charts to work with data from new GET request
+
+### Known Issues:
+
+1) Table pagination is working wierdly. When user picks a value in "Rows per page" menu, the proper amount of rows per page is shown, but it is impossible to change to the next page. Seems like there is something wrong either with 'api/data' GET method, or with 'fetch' method in 'DataGrid.js'.
 
 ## To-Do List:
 1) Implement filter by date
@@ -45,4 +56,3 @@ Second component has a table with all transactions and information about them. T
 3) Add proper styling
 4) Make pie charts stay next to each other. Consider using another library for pie charts. Ex: Google Charts
 5) Implement usage of Sequelize
-

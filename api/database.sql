@@ -119,25 +119,9 @@ INSERT INTO money (date, debit_amount, credit_amount, sender, reciever, transact
 ('2019-05-30', 5500, 0, 'Blake Griffin', 'Joe Hart', 'Misc');
 
 --Query for "/api/sums"
-SELECT
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Home') AS home_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Car') AS car_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Pets') AS pets_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Food') AS food_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Electronics') AS electronics_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'School') AS school_debit,
-    (SELECT SUM(debit_amount) FROM money WHERE transaction_category = 'Misc') AS misc_debit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Home') AS home_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Car') AS car_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Pets') AS pets_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Food') AS food_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Electronics') AS electronics_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'School') AS school_credit,
-    (SELECT SUM(credit_amount) FROM money WHERE transaction_category = 'Misc') AS misc_credit
-FROM
-    money
-LIMIT
-    1;
+SELECT transaction_category AS category, SUM(debit_amount) AS debit, SUM(credit_amount) AS credit 
+FROM money 
+GROUP BY transaction_category;
 
 --Query for "/api/data"
 SELECT * FROM money;

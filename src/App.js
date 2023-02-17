@@ -13,14 +13,37 @@ function App() {
     axios
       .get("http://localhost:4000/api/sums")
       .then(response => {
-        setData(response.data[0]);
+        setData(response.data);
       })
       .catch(error => {
         console.error(error);
       });
   }, []);
 
-  const {home_debit, car_debit, pets_debit, food_debit, electronics_debit, school_debit, misc_debit, home_credit, car_credit, pets_credit, food_credit, electronics_credit, school_credit, misc_credit} = data;
+  const home = Object.keys(data).length ? data.find(item => item.category === 'Home') : null;
+  const car = Object.keys(data).length ? data.find(item => item.category === 'Car') : null;
+  const pets = Object.keys(data).length ? data.find(item => item.category === 'Pets') : null;
+  const food = Object.keys(data).length ? data.find(item => item.category === 'Food') : null;
+  const electronics = Object.keys(data).length ? data.find(item => item.category === 'Electronics') : null;
+  const school = Object.keys(data).length ? data.find(item => item.category === 'School') : null;
+  const misc = Object.keys(data).length ? data.find(item => item.category === 'Misc') : null;
+
+  const home_debit = home ? home.debit : 0;
+  const car_debit = car ? car.debit : 0;
+  const pets_debit = pets ? pets.debit : 0;
+  const food_debit = food ? food.debit : 0;
+  const electronics_debit = electronics ? electronics.debit : 0;
+  const school_debit = school ? school.debit : 0;
+  const misc_debit = misc ? misc.debit : 0;
+
+  const home_credit = home ? home.credit : 0;
+  const car_credit = car ? car.credit : 0;
+  const pets_credit = pets ? pets.credit : 0;
+  const food_credit = food ? food.credit : 0;
+  const electronics_credit = electronics ? electronics.credit : 0;
+  const school_credit = school ? school.credit : 0;
+  const misc_credit = misc ? misc.credit : 0;
+
 
   const debits = {
     data: [{
