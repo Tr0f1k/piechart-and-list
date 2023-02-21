@@ -1,0 +1,9 @@
+.datepick {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    width: 200px;
+    height: 100px;
+}

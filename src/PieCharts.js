@@ -5,7 +5,7 @@ import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-function PieCharts() {
+function PieCharts({ t }) {
   const [data, setData] = useState({});
 
   //Pulling data from the API
@@ -47,22 +47,23 @@ function PieCharts() {
   const school_credit = school ? school.credit : 0;
   const misc_credit = misc ? misc.credit : 0;
 
+  
   //Pie chart with debits
   const debits = {
     data: [{
       type: "pie",
       dataPoints: [
-        {y: home_debit, label: "Home"},
-        {y: car_debit, label: "Car"},
-        {y: pets_debit, label: "Pets"},
-        {y: food_debit, label: "Food"},
-        {y: electronics_debit, label: "Electronics"},
-        {y: school_debit, label: "School"},
-        {y: misc_debit, label: "Misc"},
+        {y: home_debit, label: t("Home")},
+        {y: car_debit, label: t("Car")},
+        {y: pets_debit, label: t("Pets")},
+        {y: food_debit, label: t("Food")},
+        {y: electronics_debit, label: t("Electronics")},
+        {y: school_debit, label: t("School")},
+        {y: misc_debit, label: t("Misc")},
       ]
     }],
     title: {
-      text: "Debits"
+      text: t("Debit")
     }
   };
 
@@ -71,22 +72,22 @@ function PieCharts() {
     data: [{
       type: "pie",
       dataPoints: [
-        {y: home_credit, label: "Home"},
-        {y: car_credit, label: "Car"},
-        {y: pets_credit, label: "Pets"},
-        {y: food_credit, label: "Food"},
-        {y: electronics_credit, label: "Electronics"},
-        {y: school_credit, label: "School"},
-        {y: misc_credit, label: "Misc"},
+        {y: home_credit, label: t("Home")},
+        {y: car_credit, label: t("Car")},
+        {y: pets_credit, label: t("Pets")},
+        {y: food_credit, label: t("Food")},
+        {y: electronics_credit, label: t("Electronics")},
+        {y: school_credit, label: t("School")},
+        {y: misc_credit, label: t("Misc")},
       ]
     }],
     title: {
-      text: "Credits"
+      text: t("Credit")
     }
   };
 
   return (
-    <div>
+    <div dir={t("app.dir")}>
       <CanvasJSChart options={debits} />
       <CanvasJSChart options={credits} />
     </div>

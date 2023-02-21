@@ -1,0 +1,20 @@
+{
+    "app.dir": "rtl",
+    "Home": "בַּיִת",
+    "Car": "אוטו",
+    "Pets": "חיית מחמד",
+    "Food": "מזון",
+    "Electronics": "מכשירי חשמל",
+    "School": "בית ספר",
+    "Misc": "שונות",
+    "Debit": "חוֹבָה",
+    "Credit": "אַשׁרַאי",
+    "Start Date": "תאריך התחלה",
+    "End Date": "תאריך סיום",
+    "Date": "תַאֲרִיך",
+    "Debit Amount": "סכום החיוב",
+    "Credit Amount": "סכום האשראי",
+    "Sender": "שׁוֹלֵחַ",
+    "Reciever": "מַקְלֵט",
+    "Transaction Category": "קטגוריית עסקה"
+}

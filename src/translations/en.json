@@ -1,0 +1,20 @@
+{
+    "app.dir": "ltr",
+    "Home": "Home",
+    "Car": "Car",
+    "Pets": "Pets",
+    "Food": "Food",
+    "Electronics": "Electronics",
+    "School": "School",
+    "Misc": "Misc",
+    "Debit": "Debit",
+    "Credit": "Credit",
+    "Start Date": "Start Date",
+    "End Date": "End Date",
+    "Date": "Date",
+    "Debit Amount": "Debit Amount",
+    "Credit Amount": "Credit Amount",
+    "Sender": "Sender",
+    "Reciever": "Reciever",
+    "Transaction Category": "Transaction Category"
+}

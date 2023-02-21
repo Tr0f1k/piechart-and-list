@@ -1,0 +1,70 @@
+{
+    "Home" : {
+        "en": "Home",
+        "he": "בַּיִת"
+    },
+    "Car" : {
+        "en": "Car",
+        "he": "אוטו"
+    },
+    "Pets" : {
+        "en": "Pets",
+        "he": "חיית מחמד"
+    },
+    "Food" : {
+        "en": "Food",
+        "he": "מזון"
+    },
+    "Electronics" : {
+        "en": "Electronics",
+        "he": "מכשירי חשמל"
+    },
+    "School" : {
+        "en": "School",
+        "he": "בית ספר"
+    },
+    "Misc" : {
+        "en": "Misc",
+        "he": "שונות"
+    },
+    "Debit" : {
+        "en": "Debit",
+        "he": "חוֹבָה"
+    },
+    "Credit" : {
+        "en": "Credit",
+        "he": "אַשׁרַאי"
+    },
+    "Start Date" : {
+        "en": "Start Date",
+        "he": "תאריך התחלה"
+    },
+    "End Date" : {
+        "en": "End Date",
+        "he": "תאריך סיום"
+    },
+    "Date" : {
+        "en": "Date",
+        "he": "תַאֲרִיך"
+    },
+    "Debit Amount" : {
+        "en": "Debit Amount",
+        "he": "סכום החיוב"
+    },
+    "Credit Amount" : {
+        "en": "Credit Amount",
+        "he": "סכום האשראי"
+    },
+    "Sender" : {
+        "en": "Sender",
+        "he": "שׁוֹלֵחַ"
+    },
+    "Reciever" : {
+        "en": "Reciever",
+        "he": "מַקְלֵט"
+    },
+    "Transaction Category" : {
+        "en": "Transaction Category",
+        "he": "קטגוריית עסקה"
+    }
+}
