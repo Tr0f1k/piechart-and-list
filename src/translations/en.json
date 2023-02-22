@@ -1,4 +1,6 @@
 {
+    "datepick.classname": "datepicken",
+    "app.flex-direction": "row",
     "app.dir": "ltr",
     "Home": "Home",
     "Car": "Car",
@@ -16,5 +18,8 @@
     "Credit Amount": "Credit Amount",
     "Sender": "Sender",
     "Reciever": "Reciever",
-    "Transaction Category": "Transaction Category"
+    "Transaction Category": "Transaction Category",
+    "Transaction Statistics:": "Transaction Statistics:",
+    "All Transactions:": "All Transactions:",
+    "Language:": "Language:"
 }

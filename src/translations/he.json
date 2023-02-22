@@ -1,4 +1,6 @@
 {
+    "datepick.classname": "datepickhe",
+    "app.flex-direction": "row-reverse",
     "app.dir": "rtl",
     "Home": "בַּיִת",
     "Car": "אוטו",
@@ -16,5 +18,8 @@
     "Credit Amount": "סכום האשראי",
     "Sender": "שׁוֹלֵחַ",
     "Reciever": "מַקְלֵט",
-    "Transaction Category": "קטגוריית עסקה"
+    "Transaction Category": "קטגוריית עסקה",
+    "Transaction Statistics:": "סטטיסטיקות עסקאות:",
+    "All Transactions:": "כָּל הַפְּעוּלוֹת:",
+    "Language:": "שפה:"
 }

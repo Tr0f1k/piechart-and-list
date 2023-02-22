@@ -35,9 +35,12 @@ Second component has a table with all transactions and information about them pu
 
 ## Known issues:
 
-1) When switching to Hebrew, Date Picker labels do not change language
-2) When pressing "Change Language" button, it changes language from English to Hebrew, but does not change it back to English
-3) When swithcing to Hebrew, some of the elements are not displayed properly (Pagination element)
+1) When swithcing to Hebrew, some of the elements are not displayed properly (Pagination element)
+2) Navbar is too big
+
+## Potential features:
+
+1) Filter the data in the table based on the sender or reciever name
 
 ### This app is pretty much in a concept state so far, but sooner or later, it will be working properly :)
 
@@ -74,11 +77,19 @@ Second component has a table with all transactions and information about them pu
 2) Implemented translation from English to Hebrew to most of the words
 3) Implemented change direction to "Right-to-Left" when changing language from English to Hebrew
 
+## 22/02/2023
+
+### Finished Tasks:
+
+1) Added some basic styling to the page. Specifically:
+    1) Made Pie Charts stay next to each other
+    2) Added Navbar with a dropdown menu (that uses font "Awesome" icon) for language change buttons
+    3) Made Date Pickers stay next to each other and change direction properly based on the chosen language
+2) Finished translation of most of the words that were not yet translated
+3) Providing additional comments to the code
+
+
 ## To-Do List:
 
-1) Add proper styling
-2) Make pie charts stay next to each other. Consider using another library for pie charts. Ex: Google Charts
-3) Implement usage of Sequelize
-4) Make date pickers stay next to each other
-5) Consider adding button for date pickers
-6) Change language for categories in "Transaction Category" column
+1) Implement usage of Sequelize
+2) Finally get some taste in design and make the project look nice :)

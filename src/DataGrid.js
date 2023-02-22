@@ -6,13 +6,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import "./styles/DataGrid.css";
 
 //Table Styling
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    backgroundColor: "#3cc396",
   },
 });
 
@@ -94,35 +93,16 @@ function DataGrid({ t }) {
   const filteredData = filterData(data);
   const sortedData = filteredData.length > 0 ? stableSort(filteredData, getSorting(order, orderBy)) : filteredData;
   const rowCount = sortedData.length;
-  const pageCount = Math.ceil(rowCount / rowsPerPage);
   const emptyRows = page > 0 ? Math.max(0, (page + 1) * rowsPerPage - rowCount) : 0;
   const rows = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage - emptyRows);
 
 
   return (
+    <div>
     <div dir={t("app.dir")}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <div class="datepick">
-          <Stack spacing={3}>
-            <div class="item">
-              <DatePicker
-                label={t("Start date")}
-                value={startDate}
-                onChange={date => { setStartDate(date); handleDateFilterChange(); }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </div>
-            <div class="item">
-              <DatePicker
-                label={t("End date")}
-                value={endDate}
-                onChange={date => { setEndDate(date); handleDateFilterChange(); }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </div>
-          </Stack>
-        </div>
-    </LocalizationProvider>
+      <div>
+        <h1>{t("All Transactions:")}</h1>
+      </div>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -217,13 +197,32 @@ function DataGrid({ t }) {
                 <TableCell>{row.credit_amount}</TableCell>
                 <TableCell>{row.sender}</TableCell>
                 <TableCell>{row.reciever}</TableCell>
-                <TableCell>{row.transaction_category}</TableCell>
+                <TableCell>{t(row.transaction_category)}</TableCell>
               </TableRow>
             ))}
         </TableBody>
       </Table>
     </TableContainer>
-    <div>
+    </div>
+    <div className={t("datepick.classname")}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div className='pickitem'>
+              <DatePicker
+                label={t("Start Date")}
+                value={startDate}
+                onChange={date => { setStartDate(date); handleDateFilterChange(); }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </div>
+            <div className='pickitem'>
+              <DatePicker
+                label={t("End Date")}
+                value={endDate}
+                onChange={date => { setEndDate(date); handleDateFilterChange(); }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </div>
+    </LocalizationProvider>
     <TablePagination
       rowsPerPageOptions={[5, 10, 25]}
       component="div"

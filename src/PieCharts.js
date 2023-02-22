@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CanvasJSReact from './canvasjs.react';
+import "./styles/PieCharts.css";
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -20,15 +21,17 @@ function PieCharts({ t }) {
       });
   }, []);
 
-  //Searching for specific category of transaction
-  const home = Object.keys(data).length ? data.find(item => item.category === 'Home') : null;
-  const car = Object.keys(data).length ? data.find(item => item.category === 'Car') : null;
-  const pets = Object.keys(data).length ? data.find(item => item.category === 'Pets') : null;
-  const food = Object.keys(data).length ? data.find(item => item.category === 'Food') : null;
-  const electronics = Object.keys(data).length ? data.find(item => item.category === 'Electronics') : null;
-  const school = Object.keys(data).length ? data.find(item => item.category === 'School') : null;
-  const misc = Object.keys(data).length ? data.find(item => item.category === 'Misc') : null;
+  const dataArray = Object.values(data);
 
+  //Searching for specific category of transaction
+  const home = dataArray.find(item => item.category === 'Home');
+  const car = dataArray.find(item => item.category === 'Car');
+  const pets = dataArray.find(item => item.category === 'Pets');
+  const food = dataArray.find(item => item.category === 'Food');
+  const electronics = dataArray.find(item => item.category === 'Electronics');
+  const school = dataArray.find(item => item.category === 'School');
+  const misc = dataArray.find(item => item.category === 'Misc');
+    
   //Declaring debits by different categories
   const home_debit = home ? home.debit : 0;
   const car_debit = car ? car.debit : 0;
@@ -46,10 +49,10 @@ function PieCharts({ t }) {
   const electronics_credit = electronics ? electronics.credit : 0;
   const school_credit = school ? school.credit : 0;
   const misc_credit = misc ? misc.credit : 0;
-
-  
+    
   //Pie chart with debits
   const debits = {
+    backgroundColor: "#3cc396",
     data: [{
       type: "pie",
       dataPoints: [
@@ -69,6 +72,7 @@ function PieCharts({ t }) {
 
   //Pie chart with credits
   const credits = {
+    backgroundColor: "#3cc396",
     data: [{
       type: "pie",
       dataPoints: [
@@ -87,9 +91,18 @@ function PieCharts({ t }) {
   };
 
   return (
-    <div dir={t("app.dir")}>
-      <CanvasJSChart options={debits} />
-      <CanvasJSChart options={credits} />
+    <div>
+      <div dir={t("app.dir")}>{/*Pulling the value of 'dir' form the translation files (in this case: en.json and he.json)*/}
+        <h1>{t("Transaction Statistics:")}</h1>
+      </div>
+      <div className='container'> {/*Using flexbox for Pie Chart components so that they can stay next to each other*/}
+        <div className="item">
+        <CanvasJSChart options={debits} />
+        </div>
+        <div className="item">
+        <CanvasJSChart options={credits} />
+        </div>
+      </div>
     </div>
   );
 }
